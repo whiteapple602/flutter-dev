@@ -12,22 +12,20 @@ class SampleItemDetailsView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Item Details'),
       ),
-      body: ListView(
-        children: const <Widget>[
-          ListTile(
-            leading: Icon(Icons.map),
-            title: Text('Map'),
-          ),
-          ListTile(
-            leading: Icon(Icons.photo_album),
-            title: Text('Album'),
-          ),
-          ListTile(
-            leading: Icon(Icons.phone),
-            title: Text('Phone'),
-          ),
-        ],
-      )
+      body: GridView.count(
+        // Create a grid with 2 columns. If you change the scrollDirection to
+        // horizontal, this produces 2 rows.
+        crossAxisCount: 3,
+        // Generate 100 widgets that display their index in the List.
+        children: List.generate(100, (index) {
+          return Center(
+            child: Text(
+              'Item $index',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          );
+        }),
+      ),
     );
   }
 }
